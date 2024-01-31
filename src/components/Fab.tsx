@@ -4,13 +4,20 @@ import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
 //documentación forzada de nuestro componente Fab
 interface Props{
     title: string;
+    position?: 'bl' | 'br';
+    onPress: ()=>void;
 }
 
-export const Fab = ({title}: Props) => {
+export const Fab = ({title, position  = 'bl', onPress}: Props) => {
 
   return (
 
-      <TouchableOpacity style={styles.fablocationIncrease} onPress={()=>console.log('Hola')}>
+      <TouchableOpacity  
+      style={[styles.fablocation,
+    (position == 'bl')  
+    ? styles.left
+    :styles.right]}
+      onPress={onPress}>
         <View style={styles.fabIncrease}>
         <Text style={styles.fabtext}>{title}</Text>
         </View>
@@ -41,14 +48,21 @@ const styles=StyleSheet.create({
           fontSize: 14,
           fontWeight: 'bold',
   },
-  fablocationDecrease:{
+  fablocation:{
     position:'absolute',
     bottom: 20,
-    left: 10
+    // left: 10
+  }, 
+ 
+   right:{
+    right:10
   },
-  fablocationIncrease:{
-    position:'absolute',
-    bottom: 20,
-    right: 10
+  left: {
+    left:10
   }
+//   fablocationIncrease:{
+//     position:'absolute',
+//     bottom: 20,
+//     right: 10
+//   }
 })

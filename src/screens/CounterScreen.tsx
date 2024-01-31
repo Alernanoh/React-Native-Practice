@@ -9,7 +9,14 @@ export const CounterScreen = () => {
       <Text style={styles.title}     >
         Contador: {contador}
       </Text>
-      <Fab title='-1'/>
+      <Fab 
+      title='+1' //izquierda
+      onPress={()=>setContador(contador+1)}/>
+
+      <Fab 
+      title='-1' //derecha
+      position= 'br'
+      onPress={()=>setContador(contador-1)}/>
       {/* <Button title="Aumentar" 
       onPress={() => setContador(contador + 1)} />
       <Button title="Decrementar"
